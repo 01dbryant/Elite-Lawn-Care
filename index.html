@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Elite Lawn Care - Professional landscaping services with advanced features, real-time quotes, and booking">
+    <title>Elite Lawn Care - Premium Landscaping Services</title>
+    <link rel="stylesheet" href="lawncare.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div id="progress-bar"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🌿</span>
+                <span class="logo-text">Elite Lawn Care</span>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#calculator" class="nav-link">Quote Calculator</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#booking" class="cta-btn">Book Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title animate-in">Transform Your Outdoor Paradise</h1>
+            <p class="hero-subtitle animate-in">Award-winning landscaping with cutting-edge technology and personalized service</p>
+            <div class="hero-stats animate-in">
+                <div class="stat">
+                    <span class="stat-number" data-count="500">0</span>
+                    <span class="stat-label">Projects Completed</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-count="98">0</span><span>%</span>
+                    <span class="stat-label">Client Satisfaction</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-count="15">0</span><span>+</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+            </div>
+            <div class="hero-buttons animate-in">
+                <a href="#calculator" class="btn btn-primary">Get Instant Quote</a>
+                <a href="#services" class="btn btn-secondary">Explore Services</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Instant Quotes</h3>
+                    <p>AI-powered calculator gives you accurate pricing in seconds</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Online Booking</h3>
+                    <p>Schedule services 24/7 with real-time availability</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌱</div>
+                    <h3>Eco-Friendly</h3>
+                    <p>100% organic treatments and sustainable practices</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💯</div>
+                    <h3>Satisfaction Guarantee</h3>
+                    <p>Not happy? We'll make it right or refund 100%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Premium Services</h2>
+            <p class="section-subtitle">Comprehensive solutions for every outdoor need</p>
+            
+            <div class="services-grid">
+                <div class="service-card" data-service="lawn">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?w=600" alt="Lawn Care" loading="lazy">
+                        <div class="service-badge">Most Popular</div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Lawn Care & Maintenance</h3>
+                        <ul class="service-features">
+                            <li>✓ Professional mowing & edging</li>
+                            <li>✓ Fertilization programs</li>
+                            <li>✓ Weed & pest control</li>
+                            <li>✓ Aeration & overseeding</li>
+                        </ul>
+                        <div class="service-pricing">
+                            <span class="price">From $49/visit</span>
+                            <button class="btn btn-small" onclick="openCalculator('lawn')">Calculate</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card" data-service="hardscape">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600" alt="Hardscaping" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <h3>Hardscaping</h3>
+                        <ul class="service-features">
+                            <li>✓ Custom patios & walkways</li>
+                            <li>✓ Retaining walls</li>
+                            <li>✓ Fire pits & outdoor kitchens</li>
+                            <li>✓ Driveway pavers</li>
+                        </ul>
+                        <div class="service-pricing">
+                            <span class="price">From $2,500</span>
+                            <button class="btn btn-small" onclick="openCalculator('hardscape')">Calculate</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card" data-service="irrigation">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600" alt="Irrigation" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <h3>Smart Irrigation</h3>
+                        <ul class="service-features">
+                            <li>✓ WiFi-controlled systems</li>
+                            <li>✓ Weather-based scheduling</li>
+                            <li>✓ Drip irrigation</li>
+                            <li>✓ Water conservation tech</li>
+                        </ul>
+                        <div class="service-pricing">
+                            <span class="price">From $1,200</span>
+                            <button class="btn btn-small" onclick="openCalculator('irrigation')">Calculate</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card" data-service="garden">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600" alt="Garden Design" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <h3>Garden Design</h3>
+                        <ul class="service-features">
+                            <li>✓ 3D landscape design</li>
+                            <li>✓ Native plant selection</li>
+                            <li>✓ Seasonal color planning</li>
+                            <li>✓ Sustainable gardens</li>
+                        </ul>
+                        <div class="service-pricing">
+                            <span class="price">From $800</span>
+                            <button class="btn btn-small" onclick="openCalculator('garden')">Calculate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Quote Calculator -->
+    <section id="calculator" class="calculator-section">
+        <div class="container">
+            <h2 class="section-title">Instant Quote Calculator</h2>
+            <p class="section-subtitle">Get accurate pricing in real-time</p>
+            
+            <div class="calculator-card">
+                <div class="calculator-steps">
+                    <div class="step active" data-step="1">
+                        <span class="step-number">1</span>
+                        <span class="step-label">Service</span>
+                    </div>
+                    <div class="step" data-step="2">
+                        <span class="step-number">2</span>
+                        <span class="step-label">Details</span>
+                    </div>
+                    <div class="step" data-step="3">
+                        <span class="step-number">3</span>
+                        <span class="step-label">Quote</span>
+                    </div>
+                </div>
+
+                <form id="quote-form">
+                    <!-- Step 1: Service Selection -->
+                    <div class="form-step active" data-step="1">
+                        <h3>Select Your Service</h3>
+                        <div class="service-options">
+                            <label class="service-option">
+                                <input type="radio" name="service" value="lawn" required>
+                                <div class="option-content">
+                                    <span class="option-icon">🌱</span>
+                                    <span class="option-name">Lawn Care</span>
+                                </div>
+                            </label>
+                            <label class="service-option">
+                                <input type="radio" name="service" value="hardscape">
+                                <div class="option-content">
+                                    <span class="option-icon">🪨</span>
+                                    <span class="option-name">Hardscaping</span>
+                                </div>
+                            </label>
+                            <label class="service-option">
+                                <input type="radio" name="service" value="irrigation">
+                                <div class="option-content">
+                                    <span class="option-icon">💧</span>
+                                    <span class="option-name">Irrigation</span>
+                                </div>
+                            </label>
+                            <label class="service-option">
+                                <input type="radio" name="service" value="garden">
+                                <div class="option-content">
+                                    <span class="option-icon">🌺</span>
+                                    <span class="option-name">Garden Design</span>
+                                </div>
+                            </label>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">Next Step</button>
+                    </div>
+
+                    <!-- Step 2: Details -->
+                    <div class="form-step" data-step="2">
+                        <h3>Property Details</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="property-size">Property Size (sq ft)</label>
+                                <input type="number" id="property-size" name="propertySize" min="500" max="50000" value="2500" required>
+                                <span class="input-helper">Current: <span id="size-display">2500</span> sq ft</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="frequency">Service Frequency</label>
+                                <select id="frequency" name="frequency" required>
+                                    <option value="weekly">Weekly</option>
+                                    <option value="biweekly" selected>Bi-weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                    <option value="one-time">One-time</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="zip-code">ZIP Code</label>
+                                <input type="text" id="zip-code" name="zipCode" pattern="[0-9]{5}" placeholder="12345" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="start-date">Start Date</label>
+                                <input type="date" id="start-date" name="startDate" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" name="extras" value="edging" checked>
+                                Include Edging (+$15)
+                            </label>
+                            <label>
+                                <input type="checkbox" name="extras" value="cleanup">
+                                Include Cleanup (+$25)
+                            </label>
+                            <label>
+                                <input type="checkbox" name="extras" value="fertilizer">
+                                Fertilization Treatment (+$40)
+                            </label>
+                        </div>
+                        <div class="button-group">
+                            <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+                            <button type="button" class="btn btn-primary" onclick="calculateQuote()">Calculate Quote</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Quote Result -->
+                    <div class="form-step" data-step="3">
+                        <div class="quote-result">
+                            <h3>Your Custom Quote</h3>
+                            <div class="quote-breakdown">
+                                <div class="quote-item">
+                                    <span>Base Service:</span>
+                                    <span id="base-price">$0</span>
+                                </div>
+                                <div class="quote-item">
+                                    <span>Property Size Adjustment:</span>
+                                    <span id="size-adjustment">$0</span>
+                                </div>
+                                <div class="quote-item">
+                                    <span>Add-ons:</span>
+                                    <span id="extras-price">$0</span>
+                                </div>
+                                <div class="quote-item total">
+                                    <span>Total Per Visit:</span>
+                                    <span id="total-price">$0</span>
+                                </div>
+                                <div class="quote-savings" id="quote-savings" style="display: none;">
+                                    <span>You Save with Package:</span>
+                                    <span id="savings-amount">$0</span>
+                                </div>
+                            </div>
+                            <div class="quote-actions">
+                                <button type="button" class="btn btn-primary" onclick="proceedToBooking()">Book This Service</button>
+                                <button type="button" class="btn btn-secondary" onclick="resetCalculator()">Start Over</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Our Work</h2>
+            <p class="section-subtitle">Real transformations, real results</p>
+            
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="lawn">Lawn Care</button>
+                <button class="filter-btn" data-filter="hardscape">Hardscaping</button>
+                <button class="filter-btn" data-filter="irrigation">Irrigation</button>
+                <button class="filter-btn" data-filter="garden">Garden</button>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="lawn">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600" alt="Lawn transformation" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Lawn Renovation</h4>
+                        <p>Complete overhaul with aeration & overseeding</p>
+                        <button class="btn btn-small" onclick="openLightbox(this)">View Details</button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="hardscape">
+                    <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600" alt="Stone patio" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Custom Stone Patio</h4>
+                        <p>450 sq ft entertainer's dream</p>
+                        <button class="btn btn-small" onclick="openLightbox(this)">View Details</button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="irrigation">
+                    <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600" alt="Irrigation system" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Smart Irrigation Install</h4>
+                        <p>WiFi-controlled 8-zone system</p>
+                        <button class="btn btn-small" onclick="openLightbox(this)">View Details</button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="garden">
+                    <img src="https://images.unsplash.com/photo-1591857177768-837ff439d3de?w=600" alt="Garden design" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Perennial Garden</h4>
+                        <p>Native plants with year-round color</p>
+                        <button class="btn btn-small" onclick="openLightbox(this)">View Details</button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="lawn">
+                    <img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?w=600" alt="Manicured lawn" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Weekly Maintenance</h4>
+                        <p>Professional care program results</p>
+                        <button class="btn btn-small" onclick="openLightbox(this)">View Details</button>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="hardscape">
+                    <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=600" alt="Retaining wall" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Retaining Wall</h4>
+                        <p>Functional terracing with style</p>
+                        <button class="btn btn-small" onclick="openLightbox(this)">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Client Success Stories</h2>
+            <p class="section-subtitle">Verified reviews from real customers</p>
+            
+            <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"The instant quote calculator was incredibly accurate! The team arrived on time, worked efficiently, and my lawn has never looked better. Worth every penny."</p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=1" alt="Sarah Johnson">
+                        <div>
+                            <h4>Sarah Johnson</h4>
+                            <span>Springfield, IL</span>
+                            <span class="verified">✓ Verified Customer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"The smart irrigation system they installed has cut our water bill in half! The app control is so convenient. Professional installation from start to finish."</p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=33" alt="Michael Chen">
+                        <div>
+                            <h4>Michael Chen</h4>
+                            <span>Riverside, CA</span>
+                            <span class="verified">✓ Verified Customer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"From online booking to the final result, everything was seamless. Our custom patio is stunning and has become the centerpiece of our outdoor entertaining."</p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=45" alt="Emily Rodriguez">
+                        <div>
+                            <h4>Emily Rodriguez</h4>
+                            <span>Lakeside, TX</span>
+                            <span class="verified">✓ Verified Customer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slider-controls">
+                <button class="slider-btn" id="prev-testimonial">‹</button>
+                <div class="slider-dots" id="testimonial-dots"></div>
+                <button class="slider-btn" id="next-testimonial">›</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="booking">
+        <div class="container">
+            <h2 class="section-title">Book Your Service</h2>
+            <p class="section-subtitle">Real-time scheduling with instant confirmation</p>
+            
+            <div class="booking-card">
+                <form id="booking-form" class="booking-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Property Address *</label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service-type">Service Type *</label>
+                            <select id="service-type" name="serviceType" required>
+                                <option value="">Select a service...</option>
+                                <option value="lawn">Lawn Care & Maintenance</option>
+                                <option value="hardscape">Hardscaping</option>
+                                <option value="irrigation">Irrigation Systems</option>
+                                <option value="garden">Garden Design</option>
+                                <option value="consultation">Free Consultation</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="preferred-date">Preferred Date *</label>
+                            <input type="date" id="preferred-date" name="preferredDate" required>
+                            <span class="availability-indicator" id="date-availability"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Additional Details</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell us about your project..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" name="newsletter" value="yes" checked>
+                            Send me seasonal tips and special offers
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large">
+                        <span class="btn-text">Confirm Booking</span>
+                        <span class="btn-loader" style="display: none;">Processing...</span>
+                    </button>
+                </form>
+                <div class="booking-info">
+                    <div class="info-item">
+                        <span class="info-icon">📅</span>
+                        <div>
+                            <h4>Flexible Scheduling</h4>
+                            <p>Book up to 3 months in advance</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">💳</span>
+                        <div>
+                            <h4>Easy Payment</h4>
+                            <p>Pay securely online or after service</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🔔</span>
+                        <div>
+                            <h4>SMS Reminders</h4>
+                            <p>Get notified 24 hours before service</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h4>Call Us</h4>
+                            <a href="tel:555-ELITE-LAWN">(555) ELITE-LAWN</a>
+                            <p>Mon-Sat: 7AM-6PM</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <h4>Email</h4>
+                            <a href="mailto:info@elitelawncare.com">info@elitelawncare.com</a>
+                            <p>Response within 2 hours</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h4>Service Area</h4>
+                            <p>50-mile radius from Downtown</p>
+                            <a href="#" class="check-zip">Check your ZIP code</a>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">📘</a>
+                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+                        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+                    </div>
+                </div>
+                <div class="quick-contact">
+                    <h3>Quick Message</h3>
+                    <form id="quick-contact-form">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="Your Message" rows="4" required></textarea>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Elite Lawn Care</h3>
+                    <p>Premium landscaping services with cutting-edge technology. Licensed, insured, and dedicated to excellence.</p>
+                    <div class="footer-badges">
+                        <span class="badge">🏆 Award Winner</span>
+                        <span class="badge">✓ Licensed & Insured</span>
+                        <span class="badge">🌿 Eco-Certified</span>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Lawn Care</a></li>
+                        <li><a href="#services">Hardscaping</a></li>
+                        <li><a href="#services">Irrigation</a></li>
+                        <li><a href="#services">Garden Design</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                        <li><a href="#gallery">Portfolio</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#blog">Lawn Care Blog</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#guarantee">Our Guarantee</a></li>
+                        <li><a href="#support">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Elite Lawn Care. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                    <a href="#accessibility">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+            <div class="lightbox-info">
+                <h3 id="lightbox-title"></h3>
+                <p id="lightbox-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notification" class="notification"></div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
+
+    <script src="lawncare.js"></script>
+</body>
+</html>
