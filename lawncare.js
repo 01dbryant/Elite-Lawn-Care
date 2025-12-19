@@ -1,13 +1,5 @@
-// ===========================
-// ELITE LAWN CARE - JavaScript
-// Advanced Interactivity & Performance
-// ===========================
-
 document.addEventListener('DOMContentLoaded', function() {
     
-    // ===========================
-    // Scroll Progress Bar
-    // ===========================
     const progressBar = document.getElementById('progress-bar');
     
     window.addEventListener('scroll', () => {
@@ -18,15 +10,11 @@ document.addEventListener('DOMContentLoaded', function() {
         progressBar.style.width = progress + '%';
     });
     
-    // ===========================
-    // Navigation
-    // ===========================
     const navbar = document.getElementById('navbar');
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const navLinks = document.getElementById('nav-links');
     const navLinkItems = document.querySelectorAll('.nav-link');
     
-    // Sticky navbar on scroll
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
@@ -35,12 +23,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Mobile menu toggle
     mobileMenuBtn.addEventListener('click', () => {
         navLinks.classList.toggle('active');
     });
     
-    // Active nav link on scroll
     const sections = document.querySelectorAll('section[id]');
     
     window.addEventListener('scroll', () => {
@@ -62,24 +48,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Close mobile menu on link click
     navLinkItems.forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('active');
         });
     });
     
-    // ===========================
-    // Hero Stats Counter Animation
-    // ===========================
     const statNumbers = document.querySelectorAll('.stat-number');
     let animated = false;
     
     function animateStats() {
         statNumbers.forEach(stat => {
             const target = parseInt(stat.getAttribute('data-count'));
-            const duration = 2000; // 2 seconds
-            const increment = target / (duration / 16); // 60fps
+            const duration = 2000;
+            const increment = target / (duration / 16);
             let current = 0;
             
             const updateCounter = () => {
@@ -96,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Trigger animation when hero is visible
     const heroObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting && !animated) {
@@ -111,9 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
         heroObserver.observe(heroSection);
     }
     
-    // ===========================
-    // Quote Calculator
-    // ===========================
     let currentStep = 1;
     let quoteData = {
         service: '',
@@ -124,7 +102,6 @@ document.addEventListener('DOMContentLoaded', function() {
         extras: []
     };
     
-    // Pricing structure
     const pricing = {
         lawn: { base: 49, perSqFt: 0.015 },
         hardscape: { base: 2500, perSqFt: 0.5 },
@@ -145,7 +122,6 @@ document.addEventListener('DOMContentLoaded', function() {
         'fertilizer': 40
     };
     
-    // Property size display update
     const propertySizeInput = document.getElementById('property-size');
     const sizeDisplay = document.getElementById('size-display');
     
@@ -155,7 +131,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Date availability checker
     const preferredDateInput = document.getElementById('preferred-date');
     const dateAvailability = document.getElementById('date-availability');
     
@@ -164,7 +139,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const selectedDate = new Date(e.target.value);
             const dayOfWeek = selectedDate.getDay();
             
-            // Simulate availability (Monday-Friday = available, weekends = limited)
             if (dayOfWeek === 0 || dayOfWeek === 6) {
                 dateAvailability.textContent = '⚠️ Limited availability';
                 dateAvailability.className = 'availability-indicator limited';
@@ -175,7 +149,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Set minimum date to today
     const today = new Date().toISOString().split('T')[0];
     if (preferredDateInput) {
         preferredDateInput.setAttribute('min', today);
@@ -185,14 +158,10 @@ document.addEventListener('DOMContentLoaded', function() {
         startDateInput.setAttribute('min', today);
     }
     
-    // ===========================
-    // Calculator Step Navigation
-    // ===========================
     window.nextStep = function() {
         const currentFormStep = document.querySelector(`.form-step[data-step="${currentStep}"]`);
         const currentStepIndicator = document.querySelector(`.step[data-step="${currentStep}"]`);
         
-        // Validate current step
         const inputs = currentFormStep.querySelectorAll('input[required], select[required]');
         let valid = true;
         
@@ -210,11 +179,9 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Hide current step
         currentFormStep.classList.remove('active');
         currentStepIndicator.classList.remove('active');
         
-        // Show next step
         currentStep++;
         const nextFormStep = document.querySelector(`.form-step[data-step="${currentStep}"]`);
         const nextStepIndicator = document.querySelector(`.step[data-step="${currentStep}"]`);
@@ -243,13 +210,11 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     window.calculateQuote = function() {
-        // Gather form data
         const service = document.querySelector('input[name="service"]:checked').value;
         const propertySize = parseInt(document.getElementById('property-size').value);
         const frequency = document.getElementById('frequency').value;
         const selectedExtras = Array.from(document.querySelectorAll('input[name="extras"]:checked')).map(e => e.value);
         
-        // Calculate pricing
         const servicePrice = pricing[service];
         const basePrice = servicePrice.base;
         const sizeAdjustment = (propertySize - 2500) * servicePrice.perSqFt;
@@ -259,7 +224,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const subtotal = (basePrice + sizeAdjustment + extrasPrice) * frequencyMultiplier;
         const savings = basePrice + sizeAdjustment + extrasPrice - subtotal;
         
-        // Display results
         document.getElementById('base-price').textContent = `$${basePrice.toFixed(2)}`;
         document.getElementById('size-adjustment').textContent = `$${sizeAdjustment.toFixed(2)}`;
         document.getElementById('extras-price').textContent = `$${extrasPrice.toFixed(2)}`;
@@ -272,7 +236,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('quote-savings').style.display = 'none';
         }
         
-        // Store quote data
         quoteData = {
             service,
             propertySize,
@@ -303,7 +266,6 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     window.proceedToBooking = function() {
-        // Pre-fill booking form with quote data
         const serviceSelect = document.getElementById('service-type');
         if (serviceSelect) {
             const serviceMap = {
@@ -319,9 +281,6 @@ document.addEventListener('DOMContentLoaded', function() {
         showNotification('Your quote has been applied to the booking form!', 'success');
     };
     
-    // ===========================
-    // Gallery Filter
-    // ===========================
     const filterBtns = document.querySelectorAll('.filter-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
     
@@ -329,11 +288,9 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.addEventListener('click', () => {
             const filter = btn.getAttribute('data-filter');
             
-            // Update active button
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             
-            // Filter items
             galleryItems.forEach(item => {
                 if (filter === 'all' || item.getAttribute('data-category') === filter) {
                     item.style.display = 'block';
@@ -345,9 +302,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // ===========================
-    // Lightbox
-    // ===========================
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxTitle = document.getElementById('lightbox-title');
@@ -379,9 +333,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // ===========================
-    // Testimonials Slider
-    // ===========================
     const testimonialCards = document.querySelectorAll('.testimonial-card');
     const prevBtn = document.getElementById('prev-testimonial');
     const nextBtn = document.getElementById('next-testimonial');
@@ -389,7 +340,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let currentTestimonial = 0;
     
-    // Create dots
     testimonialCards.forEach((_, index) => {
         const dot = document.createElement('div');
         dot.classList.add('dot');
@@ -426,17 +376,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (prevBtn) prevBtn.addEventListener('click', prevTestimonial);
     if (nextBtn) nextBtn.addEventListener('click', nextTestimonial);
     
-    // Auto-rotate testimonials
     setInterval(nextTestimonial, 5000);
     
-    // Show first testimonial
     if (testimonialCards.length > 0) {
         testimonialCards[0].classList.add('active');
     }
     
-    // ===========================
-    // Form Submissions
-    // ===========================
     const bookingForm = document.getElementById('booking-form');
     const quickContactForm = document.getElementById('quick-contact-form');
     
@@ -448,12 +393,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const btnText = btn.querySelector('.btn-text');
             const btnLoader = btn.querySelector('.btn-loader');
             
-            // Show loader
             btnText.style.display = 'none';
             btnLoader.style.display = 'block';
             btn.disabled = true;
             
-            // Simulate API call
             setTimeout(() => {
                 btnText.style.display = 'block';
                 btnLoader.style.display = 'none';
@@ -469,7 +412,6 @@ document.addEventListener('DOMContentLoaded', function() {
         quickContactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Simulate sending message
             setTimeout(() => {
                 showNotification('Message sent successfully! We\'ll respond soon.', 'success');
                 quickContactForm.reset();
@@ -477,9 +419,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // ===========================
-    // Notification System
-    // ===========================
     function showNotification(message, type = 'success') {
         const notification = document.getElementById('notification');
         notification.textContent = message;
@@ -490,9 +429,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 4000);
     }
     
-    // ===========================
-    // Back to Top Button
-    // ===========================
     const backToTopBtn = document.getElementById('back-to-top');
     
     window.addEventListener('scroll', () => {
@@ -510,9 +446,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // ===========================
-    // Intersection Observer for Animations
-    // ===========================
     const animateOnScroll = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -525,7 +458,6 @@ document.addEventListener('DOMContentLoaded', function() {
         rootMargin: '0px 0px -100px 0px'
     });
     
-    // Animate sections on scroll
     const animatedElements = document.querySelectorAll('.feature-card, .service-card, .gallery-item, .testimonial-card');
     animatedElements.forEach(el => {
         el.style.opacity = '0';
@@ -534,18 +466,13 @@ document.addEventListener('DOMContentLoaded', function() {
         animateOnScroll.observe(el);
     });
     
-    // ===========================
-    // Performance: Lazy Loading Images
-    // ===========================
     const lazyImages = document.querySelectorAll('img[loading="lazy"]');
     
     if ('loading' in HTMLImageElement.prototype) {
-        // Browser supports lazy loading
         lazyImages.forEach(img => {
             img.src = img.dataset.src || img.src;
         });
     } else {
-        // Fallback for browsers that don't support lazy loading
         const lazyLoadObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -559,9 +486,6 @@ document.addEventListener('DOMContentLoaded', function() {
         lazyImages.forEach(img => lazyLoadObserver.observe(img));
     }
     
-    // ===========================
-    // Smooth Scroll for Links
-    // ===========================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
@@ -578,9 +502,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // ===========================
-    // Service Card Interactions
-    // ===========================
     const serviceCards = document.querySelectorAll('.service-card');
     
     serviceCards.forEach(card => {
@@ -593,12 +514,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // ===========================
-    // Initialize
-    // ===========================
     console.log('Elite Lawn Care Website Loaded Successfully! 🌿');
     
-    // Performance monitoring
     if (window.performance && window.performance.timing) {
         window.addEventListener('load', () => {
             const loadTime = window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart;
@@ -608,14 +525,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
 });
 
-// ===========================
-// Service Worker for PWA (Optional)
-// ===========================
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        // Uncomment to enable PWA features
-        // navigator.serviceWorker.register('/sw.js')
-        //     .then(reg => console.log('Service Worker registered'))
-        //     .catch(err => console.log('Service Worker registration failed'));
     });
 }
